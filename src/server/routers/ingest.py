@@ -20,7 +20,7 @@ router = APIRouter()
 
 
 @router.post("/api/ingest", responses=COMMON_INGEST_RESPONSES)
-@limiter.limit("10/minute")
+@limiter.limit("1000/minute")
 async def api_ingest(
     request: Request,  # noqa: ARG001 (unused-function-argument) # pylint: disable=unused-argument
     ingest_request: IngestRequest,
@@ -53,7 +53,7 @@ async def api_ingest(
 
 
 @router.get("/api/{user}/{repository}", responses=COMMON_INGEST_RESPONSES)
-@limiter.limit("10/minute")
+@limiter.limit("1000/minute")
 async def api_ingest_get(
     request: Request,  # noqa: ARG001 (unused-function-argument) # pylint: disable=unused-argument
     user: str,
